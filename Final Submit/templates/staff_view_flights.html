@@ -1,0 +1,27 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>My Airline Flights</h2>
+<br>
+<br>
+    <table class="table table-striped">
+        <tr>    
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>Departure Airport</th>
+            <th>Departure Date & Time</th>
+            <th>Arrival Airport</th>
+            <th>Arrival Date & Time</th>
+        </tr>
+        {% for flight in result %}
+        <tr>
+            <td>{{flight.airline_name}}</td>
+            <td>{{flight.flight_number}}</td>
+            <td>{{flight.departure_airport}}</td>
+            <td>{{flight.departure_date}} {{flight.departure_time}}</td>
+            <td>{{flight.arrival_airport}}</td>
+            <td>{{flight.arrival_date}} {{flight.arrival_time}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+{% endblock %}

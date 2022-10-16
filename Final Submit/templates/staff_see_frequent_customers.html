@@ -1,0 +1,18 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>Most Frequent Customers Within Last Year</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>Customer Email</th>
+            <th>Tickets Bought</th>
+        </tr>
+        {% for customer in result %}
+        <tr>
+            <td>{{customer.customer_email}}</td>
+            <td>{{customer.count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+<a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    <h1>Log in</h1>
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <form method="POST">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" name="username" placeholder="Username" class="form-control" required></input>
+        <br>
+        <label for="password" class="form-label">Password</label>
+        <input type="password" name="password" placeholder="Password" class="form-control" required></input>
+        <br>
+        <a class="btn btn-secondary" href="{{ url_for('index') }}">Go Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
+

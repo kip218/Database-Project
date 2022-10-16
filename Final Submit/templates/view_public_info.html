@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    <h1>View Public Info</h1>
+    {% if error %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+    <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h2>Search Flights</h2>
+    <form method="POST">
+        <input type="hidden" name="form" value="search_flights">
+        <input type="checkbox" name="only_show_future_flights" class="form-check-input" checked="true">
+        <label for="only_show_future_flights" class="form-check-label">Only show future flights</label>
+        <br>
+        <label for="departure_airport" class="form-label">Departure Airport</label>
+        <input type="text" name="departure_airport" placeholder="JFK" class="form-control"></input>
+        <br>
+        <label for="arrival_airport" class="form-label">Arrival Airport</label>
+        <input type="text" name="arrival_airport" placeholder="ICN" class="form-control"></input>
+        <br>
+        <label for="departure_date" class="form-label">Departure Date</label>
+        <input type="date" name="departure_date" class="form-control"></input>
+        <br>
+        <label for="arrival_date" class="form-label">Arrival Date</label>
+        <input type="date" name="arrival_date" class="form-control"></input>
+        <br>
+        <a class="btn btn-secondary" href="{{ url_for('index') }}">Go Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <br>
+    <h2>Check Flight Status</h2>
+    <form method="POST">
+        <input type="hidden" name="form" value="check_flight_status">
+        <input type="checkbox" name="only_show_future_flights" class="form-check-input" checked="true">
+        <label for="only_show_future_flights" class="form-check-label">Only show future flights</label>
+        <br>
+        <label for="airline_name" class="form-label">Airline Name</label>
+        <input type="text" name="airline_name" placeholder="Korean Air" class="form-control"></input>
+        <br>
+        <label for="flight_number" class="form-label">Flight Number</label>
+        <input type="text" name="flight_number" placeholder="KA1234" class="form-control"></input>
+        <br>
+        <label for="departure_date" class="form-label">Departure Date</label>
+        <input type="date" name="departure_date" class="form-control"></input>
+        <br>
+        <label for="arrival_date" class="form-label">Arrival Date</label>
+        <input type="date" name="arrival_date" class="form-control"></input>
+        <br>
+        <a class="btn btn-secondary" href="{{ url_for('index') }}">Go Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,23 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>Showing Reviews</h2>
+<br>
+<br>
+    <table class="table table-striped">
+        <tr>
+            <th>Customer</th>
+            <th>Flight Number</th>
+            <th>Rating</th>
+            <th>Comment</th>
+        </tr>
+        {% for flight in result %}
+        <tr>
+            <td>{{flight.customer_email}}</td>
+            <td>{{flight.flight_number}}</td>
+            <td>{{flight.rating}}</td>
+            <td>{{flight.comment}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+{% endblock %}

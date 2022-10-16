@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    {% if error %}
+    <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+    <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h2>Search Future Flights</h2>
+    <form method="POST">
+        <input type="hidden" name="form" value="search_flights">
+        <br>
+        <label for="departure_airport" class="form-label">Departure Airport</label>
+        <input type="text" name="departure_airport" placeholder="JFK" class="form-control"></input>
+        <br>
+        <label for="arrival_airport" class="form-label">Arrival Airport</label>
+        <input type="text" name="arrival_airport" placeholder="ICN" class="form-control"></input>
+        <br>
+        <label for="departure_date" class="form-label">Departure Date</label>
+        <input type="date" name="departure_date" class="form-control"></input>
+        <br>
+        <label for="arrival_date" class="form-label">Arrival Date</label>
+        <input type="date" name="arrival_date" class="form-control"></input>
+        <br>
+        <a class="btn btn-secondary" href="{{ url_for('customer_dashboard') }}">Go Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,12 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>Airline Revenue</h2>
+<br>
+<h3>Past Month Revenue: {{past_month_revenue}} USD</h3>
+<h3>Past Year Revenue: {{past_year_revenue}} USD</h3>
+<br>
+<h3>Total Revenue from Economy Class: {{total_econ}} USD</h3>
+<h3>Total Revenue from Business Class: {{total_busi}} USD</h3>
+<h3>Total Revenue from First Class: {{total_first}} USD</h3>
+<a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <table class="table table-striped">
+        <tr>    
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>Departure Airport</th>
+            <th>Departure Date & Time</th>
+            <th>Arrival Airport</th>
+            <th>Arrival Date & Time</th>
+        </tr>
+        {% for flight in result %}
+        <tr>
+            <td>{{flight.airline_name}}</td>
+            <td>{{flight.flight_number}}</td>
+            <td>{{flight.departure_airport}}</td>
+            <td>{{flight.departure_date}} {{flight.departure_time}}</td>
+            <td>{{flight.arrival_airport}}</td>
+            <td>{{flight.arrival_date}} {{flight.arrival_time}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h1>Create a new flight</h1>
+        <form method="POST">
+            <label for="flight_number" class="form-label">Flight Number</label>
+            <input type="text" name="flight_number" placeholder="Flight Number" class="form-control" required></input>
+            <br>
+            <label for="departure_date" class="form-label">Departure Date</label>
+            <input type="date" name="departure_date" class="form-control" required></input>
+            <br>
+            <label for="departure_time" class="form-label">Departure Time</label>
+            <input type="time" name="departure_time" class="form-control" required></input>
+            <br>
+            <label for="arrival_date" class="form-label">Arrival Date</label>
+            <input type="date" name="arrival_date" class="form-control" required></input>
+            <br>
+            <label for="arrival_time" class="form-label">Arrival Time</label>
+            <input type="time" name="arrival_time" class="form-control" required></input>
+            <br>
+            <label for="base_price" class="form-label">Base Price</label>
+            <input type="number" name="base_price" placeholder="Base Price" class="form-control" required></input>
+            <br>
+            <label for="airplane_id" class="form-label">Airplane ID</label>
+            <input type="text" name="airplane_id" placeholder="Airplane ID" class="form-control" required></input>
+            <br>
+            <label for="departure_airport" class="form-label">Departure Airport</label>
+            <input type="text" name="departure_airport" placeholder="Departure Airport" class="form-control" required></input>
+            <br>
+            <label for="arrival_airport" class="form-label">Arrival Airport</label>
+            <input type="text" name="arrival_airport" placeholder="Arrival Airport" class="form-control" required></input>
+            <a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
+{% endblock %}
+

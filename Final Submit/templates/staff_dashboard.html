@@ -1,0 +1,44 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h1>Staff Dashboard</h1>
+    <h2>Logged in as {{name}}</h2>
+    <br>
+    <h2>View My Airline Flights</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_view_flights') }}">View My Airline Flights</a>
+    <br><br>
+    <h2>Create New Flight</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_create_flights') }}">Create New Flight</a>
+    <br><br>
+    <h2>Change Flight Status</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_change_status') }}">Change Flight Status</a>
+    <br><br>
+    <h2>Add New Airplane</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_create_airplane') }}">Add New Airplane</a>
+    <br><br>
+    <h2>Add New Airport</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_create_airport') }}">Add New Airport</a>
+    <br><br>
+    <h2>See Airline Reviews</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_see_reviews') }}">See Airline Reviews</a>
+    <br><br>
+    <h2>See Most Frequent Customer</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_see_frequent_customers') }}">See Most Frequent Customer</a>
+    <br><br>
+    <h2>See Revenue</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_see_revenue') }}">See Revenue</a>
+    <br><br>
+    <h2>See Top Destinations</h2>
+    <a class="btn btn-info" href="{{ url_for('staff_see_top_dest') }}">See Top Destinations</a>
+    <br><br>
+    <h2>Log Out</h2>
+    <a class="btn btn-secondary" href="{{ url_for('log_out') }}">Log Out</a>
+</div>
+{% endblock %}
+

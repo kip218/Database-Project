@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h1>Customer Dashboard</h1>
+    <h2>Logged in as {{name}}</h2>
+    <br>
+    <h2>View My Flights</h2>
+    <a class="btn btn-info" href="{{ url_for('customer_view_flights', only_show_future_flights=True) }}">View My Flights</a>
+    <br><br>
+    <h2>Search Future Flights</h2>
+    <a class="btn btn-info" href="{{ url_for('customer_search_flights') }}">Search Future Flights</a>
+    <br><br>
+    <h2>See Past Flights</h2>
+    <a class="btn btn-info" href="{{ url_for('customer_past_flights') }}">See Past Flights</a>
+    <br><br>
+    <h2>See My Spending</h2>
+    <a class="btn btn-info" href="{{ url_for('track_spending') }}">See My Spending</a>
+    <br><br>
+    <h2>Log Out</h2>
+    <a class="btn btn-secondary" href="{{ url_for('log_out') }}">Log Out</a>
+</div>
+{% endblock %}
+

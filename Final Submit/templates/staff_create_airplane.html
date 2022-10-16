@@ -1,0 +1,46 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h2>Airplanes Owned By {{airline_name}}</h2>
+    <table class="table table-striped">
+        <tr>    
+            <th>Airplane ID</th>
+            <th>Max Seats</th>
+            <th>Manufacturer</th>
+            <th>Age</th>
+        </tr>
+        {% for airplane in result %}
+        <tr>
+            <td>{{airplane.id}}</td>
+            <td>{{airplane.seats}}</td>
+            <td>{{airplane.manufacturer}}</td>
+            <td>{{airplane.age}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h1>Add New Airplane</h1>
+        <form method="POST">
+            <label for="airplane_id" class="form-label">Airplane ID</label>
+            <input type="text" name="airplane_id" placeholder="Airplane ID" class="form-control" required></input>
+            <br>
+            <label for="seats" class="form-label">Max Seats</label>
+            <input type="number" name="seats" class="form-control" placeholder="Max Seats" required></input>
+            <br>
+            <label for="manufacturer" class="form-label">Manufacturer</label>
+            <input type="text" name="manufacturer" class="form-control" placeholder="Manufacturer" required></input>
+            <br>
+            <label for="age" class="form-label">Age</label>
+            <input type="number" name="age" class="form-control" placeholder="Age" required></input>
+            <br>
+            <a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
+{% endblock %}
+

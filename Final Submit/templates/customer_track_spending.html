@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>Spending History</h2>
+<h3>Total spending for the past 1 year (365 days): {{past_year_total}} USD</h3>
+<br>
+    <table class="table table-striped">
+        <tr>    
+            <th>Year</th>
+            <th>Month</th>
+            <th>Spending</th>
+        </tr>
+        {% for month in monthly_spendings %}
+        <tr>
+            <td>{{month.year}}</td>
+            <td>{{month.month}}</td>
+            <td>{{month.monthly_spending}} USD</td>
+        </tr>
+        {% endfor %}
+    </table>
+<a class="btn btn-secondary" href="{{ url_for('customer_dashboard') }}">Go Back</a>
+{% endblock %}

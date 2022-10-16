@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h2>Airports</h2>
+    <table class="table table-striped">
+        <tr>    
+            <th>Airport ID</th>
+            <th>Name</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Type</th>
+        </tr>
+        {% for airport in result %}
+        <tr>
+            <td>{{airport.id}}</td>
+            <td>{{airport.name}}</td>
+            <td>{{airport.city}}</td>
+            <td>{{airport.country}}</td>
+            <td>{{airport.type}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h1>Add New Airport</h1>
+        <form method="POST">
+            <label for="airport_id" class="form-label">Airport ID</label>
+            <input type="text" name="airport_id" placeholder="Airport ID" class="form-control" required></input>
+            <br>
+            <label for="name" class="form-label">Airport Name</label>
+            <input type="text" name="name" class="form-control" placeholder="Airport Name" required></input>
+            <br>
+            <label for="city" class="form-label">City</label>
+            <input type="text" name="city" class="form-control" placeholder="City" required></input>
+            <br>
+            <label for="country" class="form-label">Country</label>
+            <input type="text" name="country" class="form-control" placeholder="Country" required></input>
+            <br>
+            <input type="radio" name="type" value="International" required>
+            <label for="International">International</label><br>
+            <input type="radio" name="type" value="Domestic" required>
+            <label for="Domestic">Domestic</label><br>
+            <input type="radio" name="type" value="Both" required>
+            <label for="Both">Both</label><br>
+            <br>
+            <a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
+{% endblock %}
+

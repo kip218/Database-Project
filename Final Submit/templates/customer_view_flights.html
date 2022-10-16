@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>My Flights</h2>
+<a class="btn btn-info" href="{{ url_for('customer_view_flights', only_show_future_flights=True) }}">Only Show Future Flights</a>
+<a class="btn btn-info" href="{{ url_for('customer_view_flights') }}">Show All Flights</a>
+<br>
+<br>
+    <table class="table table-striped">
+        <tr>    
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>Departure Airport</th>
+            <th>Departure Date & Time</th>
+            <th>Arrival Airport</th>
+            <th>Arrival Date & Time</th>
+            <th>Cancel</th>
+            <th>Leave Review</th>
+        </tr>
+        {% for flight in result %}
+        <tr>
+            <td>{{flight.airline_name}}</td>
+            <td>{{flight.flight_number}}</td>
+            <td>{{flight.departure_airport}}</td>
+            <td>{{flight.departure_date}} {{flight.departure_time}}</td>
+            <td>{{flight.arrival_airport}}</td>
+            <td>{{flight.arrival_date}} {{flight.arrival_time}}</td>
+            <td><a class="btn btn-danger" href="{{ url_for('customer_cancel',
+                                                    airline_name=flight.airline_name, flight_number=flight.flight_number,
+                                                    departure_date=flight.departure_date, departure_time=flight.departure_time) }}">
+                                                Cancel</a></td>
+            <td><form action="{{ url_for('customer_review',
+                                                    airline_name=flight.airline_name, flight_number=flight.flight_number,
+                                                    departure_date=flight.departure_date, departure_time=flight.departure_time) }}"
+                                                    method="POST">
+                <input type="radio" name="rating" value="1" required>
+                <label for="1">1</label>
+                <input type="radio" name="rating" value="2" required>
+                <label for="2">2</label>
+                <input type="radio" name="rating" value="3" required>
+                <label for="3">3</label>
+                <input type="radio" name="rating" value="4" required>
+                <label for="4">4</label>
+                <input type="radio" name="rating" value="5" required>
+                <label for="5">5</label>
+                <br>
+                <label for="comment" class="form-label">Comment</label>
+                <input type="text" name="comment" placeholder="Comment" class="form-control"></input>
+                <br>
+                <button type="submit" class="btn btn-primary">Leave Review</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+<a class="btn btn-secondary" href="{{ url_for('customer_dashboard') }}">Go Back</a>
+{% endblock %}

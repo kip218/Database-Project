@@ -1,0 +1,29 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    <h1>Change Flight Status</h1>
+        <form method="POST">
+            <label for="flight_number" class="form-label">Flight Number</label>
+            <input type="text" name="flight_number" placeholder="Flight Number" class="form-control" required></input>
+            <br>
+            <label for="departure_date" class="form-label">Departure Date</label>
+            <input type="date" name="departure_date" class="form-control" required></input>
+            <br>
+            <label for="departure_time" class="form-label">Departure Time</label>
+            <input type="time" name="departure_time" class="form-control" required></input>
+            <br>
+            <input type="radio" name="status" value="on time" required>
+            <label for="on time">On Time</label><br>
+            <input type="radio" name="status" value="delayed" required>
+            <label for="delayed">Delayed</label><br>
+            <a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+</div>
+{% endblock %}
+

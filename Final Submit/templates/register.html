@@ -1,0 +1,68 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="container">
+    {% if error %}
+        <div class="alert alert-danger">{{error}}</div>
+    {% elif success %}
+        <div class="alert alert-success">{{success}}</div>
+    {% endif %}
+    {% if staffRegister %}
+        <h1>Register a New Staff Account</h1>
+        <form method="POST">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" name="username" placeholder="Username" class="form-control" required></input>
+            <br>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" placeholder="Password" class="form-control" required></input>
+            <br>
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" name="first_name" placeholder="First Name" class="form-control" required></input>
+            <br>
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" name="last_name" placeholder="Last Name" class="form-control" required></input>
+            <br>
+            <label for="date_of_birth" class="form-label">Date of Birth</label>
+            <input type="date" name="date_of_birth" class="form-control" required></input>
+            <br>
+            <label for="airline_name" class="form-label">Airline Name</label>
+            <input type="text" name="airline_name" placeholder="Airline Name" class="form-control" required></input>
+            <br>
+            <a class="btn btn-secondary" href="{{ url_for('index') }}">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    {% else %}
+        <h1>Register a New Customer Account</h1>
+        <form method="POST">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" placeholder="Email" class="form-control" required></input>
+            <br>
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" placeholder="Password" class="form-control" required></input>
+            <br>
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name" placeholder="Name" class="form-control" required></input>
+            <br>
+            <label for="address" class="form-label">Address</label>
+            <input type="text" name="building_number" placeholder="Building Number" class="form-control" required></input>
+            <input type="text" name="street" placeholder="Street" class="form-control" required></input>
+            <input type="text" name="city" placeholder="City" class="form-control" required></input>
+            <input type="text" name="state" placeholder="State" class="form-control" required></input>
+            <br>
+            <label for="phone_number" class="form-label">Phone Number</label>
+            <input type="text" name="phone_number" placeholder="Phone Number" class="form-control" required></input>
+            <br>
+            <label for="passport" class="form-label">Passport Information</label>
+            <input type="text" name="passport_number" placeholder="Passport Number" class="form-control" required></input>
+            <input type="text" name="passport_country" placeholder="Passport Country" class="form-control" required></input>
+            <label for="passport" class="form-label">Passport Expiration Date</label>
+            <input type="date" name="passport_expiration" class="form-control" required></input>
+            <label for="date_of_birth" class="form-label">Date of Birth</label>
+            <input type="date" name="date_of_birth" class="form-control" required></input>
+            <br>
+            <a class="btn btn-secondary" href="{{ url_for('index') }}">Go Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    {% endif %}
+</div>
+{% endblock %}
+

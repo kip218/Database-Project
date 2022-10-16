@@ -1,0 +1,41 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<h2>Top Destinations</h2>
+<br>
+    <h2>Top Destinations for Past 3 Months</h2>
+    <table class="table table-striped">
+        <tr>
+        	<th>Airport</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Tickets Sold</th>
+        </tr>
+        {% for dest in top_dest_months %}
+        <tr>
+            <td>{{dest.name}}</td>
+            <td>{{dest.city}}</td>
+            <td>{{dest.country}}</td>
+            <td>{{dest.count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<br>
+    <h2>Top Destinations for Past 1 Year</h2>
+    <table class="table table-striped">
+        <tr>
+        	<th>Airport</th>
+            <th>City</th>
+            <th>Country</th>
+            <th>Tickets Sold</th>
+        </tr>
+        {% for dest in top_dest_year %}
+        <tr>
+            <td>{{dest.name}}</td>
+            <td>{{dest.city}}</td>
+            <td>{{dest.country}}</td>
+            <td>{{dest.count}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<a class="btn btn-secondary" href="{{ url_for('staff_dashboard') }}">Go Back</a>
+{% endblock %}
